@@ -1,6 +1,6 @@
 /* Below these styles are marked as important because
     Bootstrap would override them */
-.body {
+body {
   font-family: 'Open Sans', sans-serif !important;
 }
 
