@@ -24,7 +24,7 @@ class Recipe extends Component {
             </div>
             <div className="card-footer">
               <button className="btn btn-primary text-capitalize" type="button">details</button>
-              <a href={source_url} className="btn btn-success mx-2 text-capitalize" target="blank">recipe url</a>
+              <a href={source_url} className="btn btn-success mx-2 text-capitalize" target="blank" rel="noopener noreferrer">recipe url</a>
             </div>
           </div>
         </div>
