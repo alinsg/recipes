@@ -4,10 +4,19 @@ import RecipeSearch from './RecipeSearch';
 
 class RecipeList extends Component {
   render() {
+    const {recipes} = this.props;
     return (
       <React.Fragment>
-        <h1>Hello from List</h1>
         <RecipeSearch />
+          <div className="container my-5">
+            {/*Title*/}
+            <div className="row">
+              <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
+                <h1 className="text-slanted">Recipe list</h1>
+              </div>
+            </div>
+            {/*End of title*/}
+          </div>
         <Recipe />
       </React.Fragment>
     );
