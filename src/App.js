@@ -9,8 +9,8 @@ import RecipeDetails from './components/RecipeDetails';
 
 class App extends Component {
   state = {
-    recipes: [], 
-    //recipes: recipes, //placeholder for App debugging
+    //recipes: [], 
+    recipes: recipes, //placeholder for App debugging
     url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
     details_id: 35386,
     pageIndex: 1
@@ -32,9 +32,9 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getRecipes();
-  }
+//  componentDidMount() {
+//    this.getRecipes();
+//  }
 
   //Depending of the value of the argument that it gets, the method displayPage
   //will render a component
