@@ -13,7 +13,8 @@ class App extends Component {
     recipes: recipes, //placeholder for App debugging
     url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
     details_id: 35386,
-    pageIndex: 1
+    pageIndex: 1,
+    search: ""
   };
 
   //Async/await allows me to write my code like I would be performing actions
@@ -32,19 +33,24 @@ class App extends Component {
     }
   }
 
-//  componentDidMount() {
-//    this.getRecipes();
-//  }
+  componentDidMount() {
+    this.getRecipes();
+  }
 
   //Depending of the value of the argument that it gets, the method displayPage
   //will render a component
   displayPage = (index) => {
     switch(index) {
       case 1: return(
-        <RecipeList recipes={this.state.recipes} handleDetails={this.handleDetails}/>
+        <RecipeList recipes={this.state.recipes} 
+                    handleDetails={this.handleDetails}
+                    value={this.state.search}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}/>
       );
       case 0: return(
-        <RecipeDetails id={this.state.details_id} handleIndex={this.handleIndex}/>
+        <RecipeDetails id={this.state.details_id} 
+                        handleIndex={this.handleIndex}/>
       );
       default:
     }
@@ -61,6 +67,15 @@ class App extends Component {
       pageIndex: index,
       details_id: id
     });
+  };
+
+  handleChange = (event) => {
+    console.log("Changed...");
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Submitted...");
   };
 
   render() {
