@@ -12,9 +12,11 @@ class App extends Component {
     //recipes: [], 
     recipes: recipes, //placeholder for App debugging
     url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
+    base_url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
     details_id: 35386,
     pageIndex: 1,
-    search: ""
+    search: "",
+    query: "&q="
   };
 
   //Async/await allows me to write my code like I would be performing actions
@@ -70,12 +72,20 @@ class App extends Component {
   };
 
   handleChange = (event) => {
-    console.log("Changed...");
+    this.setState({
+      search: event.target.value
+    });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submitted...");
+    const {base_url, query, search} = this.state;
+    this.setState({
+      url: `${base_url}${query}${search}`,
+      search: ""
+    }, () => {
+      this.getRecipes();
+    });
   };
 
   render() {
