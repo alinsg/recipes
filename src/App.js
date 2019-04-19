@@ -16,7 +16,8 @@ class App extends Component {
     details_id: 35386,
     pageIndex: 1,
     search: "",
-    query: "&q="
+    query: "&q=",
+    error: ""
   };
 
   //Async/await allows me to write my code like I would be performing actions
@@ -25,11 +26,15 @@ class App extends Component {
     try {
       const data = await fetch(this.state.url); //First get the data (await)
       const jsonData = await data.json(); //Then wait for that data in order to use it
-      this.setState({
-      //The key below is the second key that I get from the API
-      //After that I set the recipes key from state to that value
-      recipes: jsonData.recipes
-      });
+      if(jsonData.recipes.length === 0) {
+        this.setState(()=> {
+          return {error: "sorry, but your search did not return any results"}
+        });
+      } else {
+        this.setState(() => {
+          return {recipes: jsonData.recipes}
+        });
+      };
     } catch(error) {
       console.log(error);
     }
@@ -48,7 +53,8 @@ class App extends Component {
                     handleDetails={this.handleDetails}
                     value={this.state.search}
                     handleChange={this.handleChange}
-                    handleSubmit={this.handleSubmit}/>
+                    handleSubmit={this.handleSubmit}
+                    error={this.state.error}/>
       );
       case 0: return(
         <RecipeDetails id={this.state.details_id} 
@@ -80,9 +86,11 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const {base_url, query, search} = this.state;
-    this.setState({
-      url: `${base_url}${query}${search}`,
-      search: ""
+    this.setState(() => {
+      return {
+        url: `${base_url}${query}${search}`,
+        search: ""
+      };
     }, () => {
       this.getRecipes();
     });
