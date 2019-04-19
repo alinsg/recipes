@@ -3,14 +3,13 @@ import './App.css';
 //The recipes import below is used as a placeholder for
 //the API because food2fork API free plan has only 50
 //requests per day
-import {recipes} from './tempList';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 
 class App extends Component {
   state = {
-    //recipes: [], 
-    recipes: recipes, //placeholder for App debugging
+    recipes: [], 
+    //recipes: recipes, //placeholder for App debugging
     url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
     base_url: `https://www.food2fork.com/api/search?key=${process.env.REACT_APP_RECIPES_KEY}`,
     details_id: 35386,
