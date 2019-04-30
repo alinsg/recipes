@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is not my application idea, I am used it to learn React 😊
+This is not my application idea, I used it to learn React 😊
 
 Application uses [Bootstrap](https://getbootstrap.com/) for UI and [Food2Fork](https://www.food2fork.com/) API for getting recipes information.
 
@@ -18,6 +18,8 @@ Details page contains the selected recipe's ingredients and two buttons: one for
 
 ![details-page-screenshot](https://i.imgur.com/SeLKT4w.png)
 
-## Learn More
+## Observations
+
+The API key is stored as .env variable so it needs to be replaced with your individual key in order for it to work.
 
 The link to the youtube tutorial is [here](https://www.youtube.com/watch?v=MQVdgu8cpqU)
